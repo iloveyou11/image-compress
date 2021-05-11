@@ -1,5 +1,3 @@
-const WIN = window
-
 export const util = {
   // 用户通过页面标签 <input type="file" /> 上传的本地图片直接转化 data URL 字符串形式。
   // 可以使用 FileReader 文件读取构造函数。
@@ -45,10 +43,10 @@ export const util = {
    */
   file2Image: (file, callback, error) => {
     let image = new Image()
-    let URL = WIN.URL || WIN.webkitURL
+    let URL = window.URL || window.webkitURL
 
     // 解决IOS上webkit内核浏览器抛出错误 `The operation is insecure` 问题
-    if (WIN.navigator && /(?:iPad|iPhone|iPod).*?AppleWebKit/i.test(WIN.navigator.userAgent)) {
+    if (window.navigator && /(?:iPad|iPhone|iPod).*?AppleWebKit/i.test(window.navigator.userAgent)) {
       image.crossOrigin = 'anonymous'
     }
 
