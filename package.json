@@ -1,0 +1,23 @@
+{
+  "name": "image-compress",
+  "version": "1.0.0",
+  "description": "image compress tool",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "iloveyou11",
+  "license": "ISC",
+  "devDependencies": {
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iloveyou11/image-compress"
+  },
+  "dependencies": {
+    "exif-js": "^2.3.0"
+  }
+}
