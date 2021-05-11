@@ -77,8 +77,6 @@ new ImageCompress(options);
 
 ### 1. 定义工具函数
 ```js
-const WIN = window
-
 export const util = {
   // 文件转化成 `data URL` 字符串
   file2DataUrl: (file, callback, error) => {},
@@ -164,6 +162,7 @@ class ImageCompress {
   success(result) {}
 }
 
+// 将utils中的方法全部赋给ImageCompress类
 for (let key in util) {
   if (util.hasOwnProperty(key)) {
     ImageCompress[key] = util[key]
