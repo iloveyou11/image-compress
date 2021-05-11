@@ -2,14 +2,36 @@
 `image-compress`是一个图片压缩工具，支持上传图片和填写链接直接进行压缩，支持单张图片也支持批量图片，操作十分方便。
 
 ## 使用方法
-直接拷贝打包的js文件`dist/image-compress.js`到项目中，即可使用。在html中引入此js文件：`<script src="./dist/image-compress.js"></script>`。
+直接拷贝打包的js文件`dist/image-compress.js`到项目中，即可使用。在html中引入此js文件：`<script src="./dist/image-compress.js"></script>`。在传参时，只需要传入需要压缩的图片即可，其他参数都是非必须的。
 
-在传参时，只需要传入需要压缩的图片即可，其他参数都是非必须的。默认的参数配置为：
+```js
+new ImageCompress({file: file});
+```
 
-- 默认`0.8` 压缩率
+默认的参数配置为：
+
+- 压缩率0.8
 - 输出图片宽高不变
 - 输出图片格式不变（但是当png图片大于2M时，转化为jpeg图片）
 - png图片默认填充透明色
+
+我们还可以根据自身需求自定义以下配置项：
+
+```js
+const options = {
+  file: file,
+  quality: 0.6, // 配置压缩比（`quality`）
+  mimeType: 'image/jpeg', // 输出图片类型（`mimeType`）
+  maxWidth: 2000, // 最大宽（`maxWidth`）
+  maxHeight: 2000, // 最大高（`maxHeight`）
+  width: 1000, // 宽（`width`）
+  height: 1000, // 高（`height`）
+  minWidth: 500, // 最小宽（`minWidth`）
+  minHeight: 500, // 最小高（`minHeight`）
+};
+
+new ImageCompress(options);
+```
 
 当然，我们还可以传入自定义钩子函数：
 
@@ -41,50 +63,6 @@ const options = {
   afterDraw: (ctx, canvas) => {
 
   }
-};
-
-new ImageCompress(options);
-```
-
-我们还可以根据自身需求自定义以下配置项：
-
-- 配置压缩比（`quality`）
-- 输出图片类型（`mimeType`）
-- 宽（`width`）
-- 高（`height`）
-- 最大宽（`maxWidth`）
-- 最大高（`maxHeight`）
-- 最小宽（`minWidth`）
-- 最大高（`minHeight`）
-
-
-以下是一个示例：
-
-```js
-const options = {
-  file: file,
-  quality: 0.6,
-  mimeType: 'image/jpeg',
-  maxWidth: 2000,
-  maxHeight: 2000,
-  width: 1000,
-  height: 1000,
-  minWidth: 500,
-  minHeight: 500,
-  convertSize: Infinity,
-  loose: true,
-  redressOrientation: true,
-
-  // 压缩前回调
-  beforeCompress: result => {},
-  // 压缩成功回调
-  success: result => {},
-  // 压缩失败回调
-  error: result => {},
-  // 图片绘制前
-  beforeDraw: ctx => {},
-  // 图片绘制后
-  afterDraw: (ctx, canvas) => {}
 };
 
 new ImageCompress(options);
